@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurielli | Linktree</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --evergreen: #132a13;
+            --hunter-green: #31572c;
+            --fern: #4f772d;
+            --palm-leaf: #90a955;
+            --lime-cream: #ecf39e;
+            --dark-bg: #020617;
+            --dark-gradient: #0f172a;
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --accent-glow: rgba(236, 243, 158, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--evergreen) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(2, 6, 23, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(144, 169, 85, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--fern), var(--palm-leaf), var(--lime-cream));
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .perfil {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .foto-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--fern), var(--palm-leaf));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+        
+        .foto {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--dark-bg);
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: var(--lime-cream);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: var(--palm-leaf);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .tagline {
+            background: rgba(49, 87, 44, 0.3);
+            border-radius: 50px;
+            padding: 12px 20px;
+            margin: 25px 0;
+            position: relative;
+            border-left: 4px solid var(--lime-cream);
+        }
+        
+        .headline {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--lime-cream);
+            margin-bottom: 5px;
+        }
+        
+        .subheadline {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .subheadline span {
+            display: block;
+            font-size: 13px;
+            color: var(--palm-leaf);
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .botao {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-decoration: none;
+            background: rgba(49, 87, 44, 0.4);
+            color: var(--text-primary);
+            padding: 16px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(144, 169, 85, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .botao:hover {
+            background: rgba(79, 119, 45, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--palm-leaf);
+        }
+        
+        .botao::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(236, 243, 158, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .botao:hover::after {
+            left: 100%;
+        }
+        
+        .icone {
+            width: 40px;
+            font-size: 22px;
+            color: var(--lime-cream);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .texto {
+            font-size: 16px;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--fern);
+            color: var(--lime-cream);
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(144, 169, 85, 0.1);
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 15px;
+            }
+            
+            .botao {
+                padding: 14px 18px;
+            }
+        }
+        
+        .gamertag {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--palm-leaf);
+        }
+        
+        .gamertag i {
+            color: var(--lime-cream);
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <header class="perfil">
+            <div class="foto-container">
+                <img src="https://i.postimg.cc/VkKdZdK3/MInha_foto.png" alt="Foto de Laurielli" class="foto">
+            </div>
+            <h1>Laurielli Soares dos Santos</h1>
+            <p class="subtitle">Engenharia de Software | Tecnologia & Projetos</p>
+            
+            <div class="gamertag">
+                <i class="fas fa-gamepad"></i>
+                <span>Gamer Mindset</span>
+            </div>
+        </header>
+        
+        <div class="tagline">
+            <h2 class="headline">Foco • Estratégia • Constância</h2>
+            <p class="subheadline">
+                Construindo soluções, um nível por vez.
+                <span>Código, jogos e inovação</span>
+            </p>
+        </div>
+        
+        <nav class="links">
+            <a class="botao" href="https://www.instagram.com/lauri.s.s._/" target="_blank">
+                <span class="icone">
+                    <i class="fab fa-instagram"></i>
+                </span>
+                <span class="texto">Instagram</span>
+                <span class="badge">@lauri.s.s._</span>
+            </a>
+            
+            <a class="botao" href="#" target="_blank">
+                <span class="icone">
+                    <i class="fab fa-tiktok"></i>
+                </span>
+                <span class="texto">TikTok</span>
+                <span class="badge">Em breve</span>
+            </a>
+            
+            <a class="botao" href="#" target="_blank">
+                <span class="icone">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span class="texto">GitHub</span>
+                <span class="badge">Projetos</span>
+            </a>
+            
+            <a class="botao" href="#" target="_blank">
+                <span class="icone">
+                    <i class="fab fa-linkedin"></i>
+                </span>
+                <span class="texto">LinkedIn</span>
+                <span class="badge">Carreira</span>
+            </a>
+            
+            <a class="botao" href="#" target="_blank">
+                <span class="icone">
+                    <i class="fas fa-code"></i>
+                </span>
+                <span class="texto">Portfólio</span>
+                <span class="badge">Em construção</span>
+            </a>
+        </nav>
+        
+        <footer class="footer">
+            <p>© 2023 Laurielli Soares | Desenvolvido com paixão por tecnologia</p>
+        </footer>
+    </main>
+    
+    <script>
+        // Efeito de digitação no subtítulo
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.botao');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.icone i');
+                    icon.style.transform = 'scale(1.2)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.icone i');
+                    icon.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Efeito de digitação
+            const tagline = document.querySelector('.subheadline span');
+            const originalText = tagline.textContent;
+            tagline.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    tagline.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            // Inicia o efeito após um breve delay
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
+</body>
+</html>
